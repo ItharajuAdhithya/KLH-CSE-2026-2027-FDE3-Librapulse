@@ -63,23 +63,7 @@ PostgreSQL / Amazon Redshift: Structured persistence for production queries and 
 Power BI and Metabase connect directly to the Gold database layer to serve interactive
 operational dashboards for circulation metrics and inventory demand.
 
-System Workflow:
-Library Data Sources (Checkout Logs, Member Records, Catalog)
-               │
-               ▼
-     Raw Data Ingestion (Python / JSON & CSV)
-               │
-               ▼
-     PySpark Processing (Silver Layer - Cleaning & Deduplication)
-               │
-               ▼
-     Apache Airflow Workflow Orchestration
-               │
-               ▼
-     Gold Layer Storage (PostgreSQL / Amazon Redshift / Parquet)
-               │
-               ▼
-     Power BI / Metabase Analytics Dashboard
+
 
 Workflow Explanation:
 1) Library interaction logs and checkout events are generated continuously from distributed campus systems.
