@@ -4,6 +4,7 @@ An end-to-end Data Engineering platform for processing, validating, storing, and
 continuous library transaction and borrowing data at scale.
 
 Overview:
+
 LibraPulse is a distributed data processing and streaming analytics platform designed to 
 handle high-volume, continuously generated library data with minimal latency.
 
@@ -34,6 +35,7 @@ LibraPulse addresses these challenges by providing an integrated pipeline for en
 data ingestion, distributed transformation, quality validation, and real-time dashboarding.
 
 Objectives:
+
 Build a scalable, low-latency library data processing pipeline using PySpark. 
 Efficiently process large volumes of book, member, and checkout data across distributed storage.  
 Perform automated data cleaning, deduplication, and schema enforcement.  
@@ -43,29 +45,36 @@ Provide interactive monitoring dashboards for library administrators and faculty
 Build a modular and containerized Medallion Data Architecture (Bronze, Silver, Gold).  
 
 Proposed Solution:
+
 LibraPulse provides an end-to-end data pipeline consisting of multiple architecture stages:
 
 1. Data Ingestion (Bronze Layer)
+   
 Python data generation scripts and event hooks ingest raw checkout logs (JSON) and book catalog metadata (CSV) into containerized staging storage.
 
-2. Stream & Batch Processing (Silver Layer)
+3. Stream & Batch Processing (Silver Layer)
+   
 PySpark and Spark Structured Streaming clean missing values, strip duplicate transactions, standardize date formats, and enforce strict type schemas.
 
-3. Data Quality & Orchestration
+5. Data Quality & Orchestration
 Apache Airflow orchestrates workflow schedules and triggers processing DAGs inside Docker environments to ensure consistent pipeline execution.
 
-4. Storage & Aggregation (Gold Layer)
+6. Storage & Aggregation (Gold Layer)
+
 Processed datasets and aggregated analytics are written to high-performance storage:
+
 Parquet / S3: Efficient analytical file storage for historical records.
 PostgreSQL / Amazon Redshift: Structured persistence for production queries and reporting.
 
-5. Analytics & Visualization
+8. Analytics & Visualization
+
 Power BI and Metabase connect directly to the Gold database layer to serve interactive
 operational dashboards for circulation metrics and inventory demand.
 
 
 
 Workflow Explanation:
+
 1) Library interaction logs and checkout events are generated continuously from distributed campus systems.
 2) Raw data is ingested in batch/stream formats into the Bronze landing zone.
 3) PySpark transformation pipelines process the records, handling missing values and duplicate checkouts.
@@ -74,9 +83,11 @@ Workflow Explanation:
 6) Power BI dashboards render real-time circulation reports, top borrowed genres, and active member statistics.
 
 Workflow Summary:
+
 Collect → Process → Validate → Store → Aggregate → Serve → Monitor
 
 Key Features:
+
 1) Distributed ingestion of high-volume library transactional logs  
 2) Automated data cleansing, deduplication, and schema standardization using PySpark  
 3) Medallion Architecture (Bronze → Silver → Gold) for data reliability  
@@ -87,12 +98,14 @@ Key Features:
 8) Full containerization using Docker for reproducible deployment
 
 Novelty:
+
 The main novelty of LibraPulse lies in its end-to-end integration of distributed big-data processing with a Medallion Architecture specifically tailored for academic library systems.  
 Rather than relying on traditional SQL batch scripts or single-node relational databases, LibraPulse unifies:
 Distributed Ingestion + PySpark Medallion Pipeline + Automated Airflow Orchestration + Redshift Storage + Real-Time BI Dashboards  
 The novelty is primarily architectural and operational, transforming legacy library reporting into a scalable, automated data engineering platform.
 
 Expected Outcomes:
+
 Accelerated processing of high-volume library transactions via PySpark.  
 Increased data quality through automated deduplication and cleansing.  
 Clear insights into top-borrowed titles, peak checkout times, and inactive inventories.  
@@ -100,14 +113,17 @@ Robust centralized storage supporting fast complex reporting queries.
 Automated pipeline orchestration removing the need for manual ETL runs
 
 Future Scope:
+
 Integration of predictive machine learning models for book recommendation systems.  
 Automated alerting for overdue anomalies and stock replenishment thresholds.  
 Real-time streaming integration with Apache Kafka for live checkout feeds.  
 Cloud-native serverless deployment on AWS Glue. 
 
-Team: Adhithya-2420030571, Teja-2420030737, Vivek-2420030350
+Team: 
+Adhithya-2420030571, Teja-2420030737, Vivek-2420030350
 
 Project Guide:
+
 Dr. N. Shirisha, Associate Professor
 
 Academic Information
